@@ -1,3 +1,44 @@
+# Salesforce-ChatGPT
+
+Welcome to my attempt at a Salesforce-ChatGPT integration!  This will start off as REST callouts from Apex, but could evolve into an inbound call from ChatGPT or other OpenAI product into Salesforce.  I even asked ChatGPT [how to write a Salesforce integration](ChatGPT-Instructions.md)... let's see if it got it right!
+
+# Sample Script
+I've written only a few commands so far.
+
+## Describe Models and Insert into SObjects
+This will get a list of AI models and insert them as custom SObjects Model__c (will duplicate if already exist)
+```
+String modelListResultJson = ChatGPT.listModels();
+List<Database.SaveResult> saveResults = ChatGPT.insertModels(modelListResultJson);
+for(Database.SaveResult sr : saveResults) {a
+    System.debug(sr);
+}
+System.debug('saveResults.size(): ' + saveResults.size());
+
+```
+
+## Generate Image from Prompt
+This will take a given prompt, generate an image, and save it to Salesforce as a ContentDocument/ContentVersion
+```
+String prompt = '[Insert your descriptive image prompt here]';
+String imgResJson = ChatGPT.createImage(prompt);
+System.debug(imgResJson);
+
+List<ContentVersion> imagesSaved = ChatGPT.saveImages(imgResJson);
+for(ContentVersion cv : imagesSaved) {
+    System.debug(cv);
+}
+
+```
+Since this ContentDocument is not in a Library or associated with any records, here's a query that will show you ContentDocuments in your org so you can open the Detail Page from the Developer Console Query Editor and view it in your org.
+```
+SELECT Id, Title, CreatedDate FROM ContentDocument
+```
+
+
+# Standard SFDX README template
+And below you'll find the standard SalesforceDX readme template we all know and love
+
 # Salesforce DX Project: Next Steps
 
 Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.

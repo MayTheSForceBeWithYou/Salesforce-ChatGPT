@@ -1,0 +1,26 @@
+{
+  "name": "salesforce-chatgpt",
+  "version": "1.0.0",
+  "description": "Salesforce-ChatGPT integration",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MayTheSForceBeWithYou/Salesforce-ChatGPT.git"
+  },
+  "keywords": [
+    "Salesforce",
+    "ChatGPT"
+  ],
+  "author": "Nate Pepper",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MayTheSForceBeWithYou/Salesforce-ChatGPT/issues"
+  },
+  "homepage": "https://github.com/MayTheSForceBeWithYou/Salesforce-ChatGPT#readme",
+  "dependencies": {
+    "openai": "^3.2.1"
+  }
+}
