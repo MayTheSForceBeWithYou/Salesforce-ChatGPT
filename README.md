@@ -2,7 +2,10 @@
 
 Welcome to my attempt at a Salesforce-ChatGPT integration!  This will start off as REST callouts from Apex, but could evolve into an inbound call from ChatGPT or other OpenAI product into Salesforce.  I even asked ChatGPT [how to write a Salesforce integration](ChatGPT-Instructions.md)... let's see if it got it right!
 
-# Sample Script
+## Named Credential Usage
+For the named credential, enter your OpenAI Organization ID as the username and your API Key as the password.
+
+# Sample Scripts
 I've written only a few commands so far.
 
 ## Describe Models and Insert into SObjects
@@ -15,6 +18,10 @@ for(Database.SaveResult sr : saveResults) {a
 }
 System.debug('saveResults.size(): ' + saveResults.size());
 
+```
+You should be able to see the Model__c records in the tab/list view for it, but here's also a query to get the inserted records
+```
+SELECT Id, Name, CreatedDate FROM Model__c ORDER BY Name ASC
 ```
 
 ## Generate Image from Prompt
@@ -32,7 +39,7 @@ for(ContentVersion cv : imagesSaved) {
 ```
 Since this ContentDocument is not in a Library or associated with any records, here's a query that will show you ContentDocuments in your org so you can open the Detail Page from the Developer Console Query Editor and view it in your org.
 ```
-SELECT Id, Title, CreatedDate FROM ContentDocument
+SELECT Id, Title, CreatedDate FROM ContentDocument ORDER BY CreatedDate DESC
 ```
 
 
